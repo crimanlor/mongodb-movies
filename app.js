@@ -42,25 +42,30 @@ app.get("/", async (req, res) => {
      const movies = database.collection('movies');
 
      // Definir un objeto que va a contener la query a la base de datos y las opciones
-    const { keyword } = req.query;
-     let query = {}
+    const { keyword, type, fromYear } = req.query;
+    let query = {}
      const options = { sort: {year: -1}, limit: 10}
+     
 
      // TODO 1: Ahora la palabra clave también tenemos que buscarla en el campo 'plot' y en el campo 'fullPlot' de los documentos
     if (keyword) {
-        query.title = new RegExp(keyword, 'i'); // 'i' para que sea insensible a mayúsculas
+        query.title = new RegExp(keyword, 'i'); // 'i' para que sea 
     }
 
     // TODO 2: Si el parámetro 'type' está informado (tiene valor), entonces tenemos que crear una nueva propiedad en la query (query.type) y asignarle el valor adecuado para buscar las películas también por tipo de filmación
-    /**
-     * if (type) {
-     *   ...
-     * }
-     */
+    if (type) {
+        query.type = type 
+    }
+    console.log("🚀 ~ app.get ~ type:", type)
 
     // TODO 3: Si el parámetro fromYear está informado....
+    if (fromYear) {
+        // Añadir criterio de búsqueda para que filtre a partir de las películas filmadas en el año formYear
+        query.year = { $gte: Number(fromYear) }
+    }
 
-    // TODO 4: Si el parámetro toYear está informado....
+     // TODO 4: Si el parámetro toYear está informado....
+    
 
      // Recuperar todas las películas con esa query y opciones
      const documents = await movies.find(query, options).toArray();
@@ -68,14 +73,11 @@ app.get("/", async (req, res) => {
 
 
      // 2. Tenemos que pasar a la vista todos los documentos que hemos recuperado
+     // 3. En el EJS tenemos que iterar por cada uno de los documentos, y para cada documento, mostrar titulo, imagen y año de lanzamiento (ver practica fototeca) 
+
      res.render("index", {
          documents
      });
-     
-    // 3. En el EJS tenemos que iterar por cada uno de los documentos, y para cada documento, mostrar titulo, imagen y año de lanzamiento (ver practica fototeca) 
-    
-    
-
     
 })
 

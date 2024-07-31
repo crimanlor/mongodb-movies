@@ -9,23 +9,25 @@
 <body>
     <main class="container">
         <h1>Movies Database</h1>
-        <section class="container">
-            <label for="keyword">Palabra clave:</label>
-            <input type="text" name="keyword" id="keyword">
-            <label for="type">Tipo de filmación</label>
-            <select name="type" id="type">
-                <option value="allTypes">Todos los tipos</option>
-                <option value="movie">Película</option>
-                <option value="serie">Serie</option>
-            </select>
-        </section>
-        <fieldset class="grid">
-            <label for="fromYear">Desde el año:</label>
-            <input type="number" name="fromYear" id="fromYear" min="1850">
-            <label for="toYear">Hasta el año:</label>
-            <input type="number" name="toYear" id="toYear" min="1850">
-        </fieldset>
-        <input type="submit" value="Buscar">
+        <form action="/">
+            <section class="container">
+                <label for="keyword">Palabra clave:</label>
+                <input type="text" name="keyword" id="keyword">
+                <label for="type">Tipo de filmación</label>
+                <select name="type" id="type">
+                    <option value="">Todos los tipos</option>
+                    <option value="movie">Película</option>
+                    <option value="serie">Serie</option>
+                </select>
+            </section>
+            <fieldset class="grid">
+                <label for="fromYear">Desde el año:</label>
+                <input type="number" name="fromYear" id="fromYear" min="1850">
+                <label for="toYear">Hasta el año:</label>
+                <input type="number" name="toYear" id="toYear" min="1850">
+            </fieldset>
+            <input type="submit" value="Buscar">
+        </form>
         <% for (const doc of documents) { %>
             <article>
                 <header><%= doc.title %></header>
