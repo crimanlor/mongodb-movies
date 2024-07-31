@@ -1,0 +1,30 @@
+{
+  "name": "mongodb-movies",
+  "version": "1.0.0",
+  "description": "Debemos crear una interfaz gráfica para acceder a la base de datos _sample_mflix_ de MongoDB, concretamente a la colección _movies_.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crimanlor/mongodb-movies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crimanlor/mongodb-movies/issues"
+  },
+  "homepage": "https://github.com/crimanlor/mongodb-movies#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
